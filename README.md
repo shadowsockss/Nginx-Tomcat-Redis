@@ -24,17 +24,20 @@ Tomcat服务
 192.168.1.177:8002
 192.168.1.177:8003
 Nginx配置
+
 upstream mytomcats {  
 server 192.168.1.177:8001;  
 server 192.168.1.177:8002;  
 server 192.168.1.177:8003;  
 }
+
 server {  
 listen 80;  
 server_name www.ntr14.com; 
 location ~* \.(jpg|gif|png|swf|flv|wma|wmv|asf|mp3|mmf|zip|rar)$ {  
         root /web/www/html/;  
-}  
+}
+
 location / {  
         proxy_pass http://mytomcats;  
         proxy_redirect off;  
@@ -52,12 +55,16 @@ location / {
         proxy_temp_file_write_size 64k; 
 }
 }
+
 upstream指定负载均衡组，指定其Tomcat成员
 location ~* \.(jpg|gif|……实现了静态资源分离。ps：在location指令使用正则表达式后再用alias指令，Nginx是不支持的。
+
+
 2、Nginx实现静态资源分离
 Tomcat服务
 192.168.1.177:8000
 Nginx配置
+
 server {  
 listen 80;  
 server_name www.ntr14.com;  
@@ -65,6 +72,7 @@ root /web/www/html;
 location /img/ {  
 alias /web/www/html/img/;  
 }
+
 location ~ (\.jsp)|(\.do)$ {  
 proxy_pass http://192.168.1.177:8000;  
 proxy_redirect off;  
@@ -82,6 +90,7 @@ proxy_read_timeout 90;
         proxy_temp_file_write_size 64k;  
 }   
 }
+
 第一个location指令将/web/www/html/img/目录下的静态文件交给Nginx来完成。最后一个location指令将所有以.jsp、.do结尾的文件都交给Tomcat服务器的8080端口来处理。
 3、Nginx+Tomcat+Redis实现session共享
 Redis服务
@@ -100,7 +109,9 @@ server 192.168.1.177:8001;
 server 192.168.1.177:8002;  
 server 192.168.1.177:8003;  
 }
+
 log_format www_ntr14_com '$remote_addr - $remote_user [$time_local] $request ' '"$status" $body_bytes_sent "$http_referer"'  '"$http_user_agent" "$http_x_forwarded_for"';  
+
 server {
 listen  80;  
 server_name www.ntr14.com;   
