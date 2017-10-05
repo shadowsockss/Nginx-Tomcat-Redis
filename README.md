@@ -10,9 +10,6 @@ CentOS安装Redis
 参考：http://www.cnblogs.com/zhuhongbao/archive/2013/06/04/3117997.html
 
 
-新手请先阅读：http://www.cnblogs.com/zhrxidian/p/5491285.html
-
-
 
 多个Tomcat负载均衡实例：可在服务器上复制出多个Tomcat分别修改Tomcat的
 http访问端口（默认为8080端口）
@@ -117,3 +114,4 @@ access_log /usr/tmp/logs/redis.ntr14.log www_ntr14_com;
 }  
 依次启动Redis、Tomcat、Nginx，访问Nginx
 
+新手可先看一个入门篇：http://www.cnblogs.com/zhrxidian/p/5491285.html
