@@ -1,7 +1,7 @@
 # Nginx-Tomcat-Redis
 Nginx+Tomcat+Redis实现负载均衡、资源分离、session共享
 
-Nginx+Tomcat+Redis实现负载均衡、资源分离、session共享
+
 CentOS安装Nginx
 http://centoscn.com/CentosServer/www/2013/0910/1593.html
 CentOS安装Tomcat
