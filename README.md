@@ -3,10 +3,15 @@ Nginx+Tomcat+Redis实现负载均衡、资源分离、session共享
 
 
 CentOS安装Nginx
+
 参考：http://centoscn.com/CentosServer/www/2013/0910/1593.html
+
 CentOS安装Tomcat
+
 参考：http://blog.csdn.net/zhuying_linux/article/details/6583096
+
 CentOS安装Redis
+
 参考：http://www.cnblogs.com/zhuhongbao/archive/2013/06/04/3117997.html
 
 
