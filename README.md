@@ -1,13 +1,13 @@
 # Nginx-Tomcat-Redis
 Nginx+Tomcat+Redis实现负载均衡、资源分离、session共享
 
-
-CentOS安装Nginx 
-参考 http://centoscn.com/CentosServer/www/2013/0910/1593.html
+Nginx+Tomcat+Redis实现负载均衡、资源分离、session共享
+CentOS安装Nginx
+http://centoscn.com/CentosServer/www/2013/0910/1593.html
 CentOS安装Tomcat
-参考 http://blog.csdn.net/zhuying_linux/article/details/6583096
+http://blog.csdn.net/zhuying_linux/article/details/6583096
 CentOS安装Redis
-参考 http://www.cnblogs.com/zhuhongbao/archive/2013/06/04/3117997.html
+http://www.cnblogs.com/zhuhongbao/archive/2013/06/04/3117997.html
 多个Tomcat负载均衡实例：可在服务器上复制出多个Tomcat分别修改Tomcat的
 http访问端口（默认为8080端口）
  
@@ -28,7 +28,7 @@ server 192.168.1.177:8003;
 }
 server {  
 listen 80;  
-server_name www.iu14.com; 
+server_name www.ntr14.com; 
 location ~* \.(jpg|gif|png|swf|flv|wma|wmv|asf|mp3|mmf|zip|rar)$ {  
         root /web/www/html/;  
 }  
@@ -57,7 +57,7 @@ Tomcat服务
 Nginx配置
 server {  
 listen 80;  
-server_name www.iu14.com;  
+server_name www.ntr14.com;  
 root /web/www/html; 
 location /img/ {  
 alias /web/www/html/img/;  
@@ -97,17 +97,17 @@ server 192.168.1.177:8001;
 server 192.168.1.177:8002;  
 server 192.168.1.177:8003;  
 }
-log_format www_iu14_com '$remote_addr - $remote_user [$time_local] $request ' '"$status" $body_bytes_sent "$http_referer"'  '"$http_user_agent" "$http_x_forwarded_for"';  
+log_format www_ntr14_com '$remote_addr - $remote_user [$time_local] $request ' '"$status" $body_bytes_sent "$http_referer"'  '"$http_user_agent" "$http_x_forwarded_for"';  
 server {
 listen  80;  
-server_name www.iu14.com;   
+server_name www.ntr14.com;   
     location / {  
         proxy_pass http:// mytomcats;  
         proxy_set_header Host $host;  
         proxy_set_header X-Real-IP $remote_addr;  
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  
 }  
-access_log /usr/tmp/logs/redis.iu14.log www_iu14_com;  
+access_log /usr/tmp/logs/redis.ntr14.log www_ntr14_com;  
 }  
 依次启动Redis、Tomcat、Nginx，访问Nginx
 
