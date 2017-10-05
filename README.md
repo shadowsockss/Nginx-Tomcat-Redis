@@ -8,6 +8,12 @@ CentOS安装Tomcat
 http://blog.csdn.net/zhuying_linux/article/details/6583096
 CentOS安装Redis
 http://www.cnblogs.com/zhuhongbao/archive/2013/06/04/3117997.html
+
+
+新手请先阅读：http://www.cnblogs.com/zhrxidian/p/5491285.html
+
+
+
 多个Tomcat负载均衡实例：可在服务器上复制出多个Tomcat分别修改Tomcat的
 http访问端口（默认为8080端口）
  
